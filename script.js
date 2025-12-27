@@ -56,8 +56,8 @@ function checkGuess() {
 let attemptCount = 0;
 // ฟังก์ชันอัปเดตจํานวนครั้ง
 function updateDisplay() {
- const attemptsContainer = document.getElementById("attemptsContainer");
- attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
+  const attemptsContainer = document.getElementById("attemptsContainer");
+  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
 }
 // ฟังก์ชันเริ่มเกมใหม่
 function resetGame() {
@@ -129,3 +129,25 @@ function resetGame() {
   document.getElementById("guessInput").focus();
 }
 // ...existing code..
+// filepath: script.js
+// ...existing code...
+// เพิ่มการ select text เมื่อคลิก input
+document.addEventListener("DOMContentLoaded", function () {
+  const guessInput = document.getElementById("guessInput");
+  guessInput.addEventListener("focus", function () {
+    this.select();
+  });
+});
+// filepath: script.js
+// ...existing code...
+// เพิ่มการรองรับ Enter key
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("guessInput")
+    .addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        checkGuess();
+      }
+    });
+});
+// ...existing code...
